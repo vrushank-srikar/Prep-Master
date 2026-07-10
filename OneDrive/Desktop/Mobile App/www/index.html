@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepMaster - Mobile Prep App</title>
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Desktop Frame Mockup Wrapper -->
+        <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+                
+                <!-- Toast Notifications -->
+                <div id="toast" class="toast-notification hidden">
+                    <span id="toast-text">Message</span>
+                </div>
+
+                <!-- SCREEN: HOME -->
+                <section id="screen-home" class="app-screen active">
+                    <header class="app-header">
+                        <div class="header-main">
+                            <span class="app-logo-icon">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                            </span>
+                            <div class="header-text">
+                                <h1>PrepMaster</h1>
+                                <p class="header-subtitle">Your personal study companion</p>
+                            </div>
+                        </div>
+                        <button id="btn-open-json" class="icon-btn" title="Manage Data JSON">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                        </button>
+                    </header>
+
+                    <div class="screen-content">
+                        <!-- Search Box -->
+                        <div class="search-container">
+                            <div class="search-bar">
+                                <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" id="search-input" placeholder="Search subjects or topics...">
+                                <button id="btn-clear-search" class="icon-btn hidden">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quick Revision Section (Starred Topics) -->
+                        <div id="section-revision" class="revision-section">
+                            <div class="section-header">
+                                <svg class="section-icon star-icon-active" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <h2>Quick Revision</h2>
+                                <span class="badge" id="revision-count">0</span>
+                            </div>
+                            <div id="revision-list" class="horizontal-scroll">
+                                <!-- Dynamic Starred Topics -->
+                                <div class="empty-state-mini">
+                                    <p>Star topics to revise them here!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subjects Section -->
+                        <div class="subjects-section">
+                            <div class="section-header">
+                                <svg class="section-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                <h2>Subjects</h2>
+                            </div>
+                            <div id="subjects-grid" class="subjects-grid">
+                                <!-- Dynamic Subject Cards -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SCREEN: TOPICS -->
+                <section id="screen-topics" class="app-screen hidden">
+                    <header class="app-header sub-header">
+                        <button class="btn-back icon-btn">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        </button>
+                        <div class="header-title-container">
+                            <h2 id="topics-subject-title">Subject Topics</h2>
+                        </div>
+                        <div class="header-actions">
+                            <!-- Placeholder to balance layout -->
+                            <div style="width: 40px;"></div>
+                        </div>
+                    </header>
+
+                    <div class="screen-content">
+                        <div class="topics-container">
+                            <div id="topics-list" class="topics-list">
+                                <!-- Dynamic Topics -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SCREEN: DETAILS -->
+                <section id="screen-details" class="app-screen hidden">
+                    <header class="app-header sub-header">
+                        <button class="btn-back icon-btn">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        </button>
+                        <div class="header-title-container">
+                            <h2 id="details-topic-title">Topic Detail</h2>
+                        </div>
+                        <button id="btn-star-detail" class="icon-btn star-toggle-btn">
+                            <svg class="star-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </button>
+                    </header>
+
+                    <div class="screen-content">
+                        <article class="details-container">
+                            <div class="topic-meta">
+                                <span id="details-subject-badge" class="subject-badge">Mathematics</span>
+                            </div>
+                            <h1 id="details-large-title" class="topic-detail-title">Topic Title</h1>
+                            <hr class="divider">
+                            <div id="details-description" class="topic-description">
+                                <!-- Detailed description HTML dynamically rendered -->
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- SCREEN: JSON MANAGER -->
+                <section id="screen-json" class="app-screen hidden">
+                    <header class="app-header sub-header">
+                        <button class="btn-back icon-btn">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        </button>
+                        <div class="header-title-container">
+                            <h2>Manage Data JSON</h2>
+                        </div>
+                        <div style="width: 40px;"></div>
+                    </header>
+
+                    <div class="screen-content json-editor-content">
+                        <p class="json-guide-text">
+                            You can customize the subjects and topics by modifying the JSON structure below. Click "Save & Apply" to update the app.
+                        </p>
+                        
+                        <div class="json-textarea-wrapper">
+                            <textarea id="json-textarea" spellcheck="false" placeholder="Paste your JSON here..."></textarea>
+                        </div>
+
+                        <div id="json-error-msg" class="json-error hidden">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            <span id="error-text">Invalid JSON format</span>
+                        </div>
+
+                        <input type="file" id="json-file-input" accept=".json" style="display: none;">
+                        <div class="json-actions">
+                            <button id="btn-upload-json" class="btn btn-secondary">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 12 15 15"></polyline></svg>
+                                Choose File
+                            </button>
+                            <button id="btn-reset-json" class="btn btn-secondary">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+                                Reset
+                            </button>
+                            <button id="btn-save-json" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                                Save & Apply
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <!-- Android Navigation Bar Mockup -->
+            <div class="phone-nav-bar">
+                <div class="nav-bar-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PrepMaster</string>
+    <string name="title_activity_main">PrepMaster</string>
+    <string name="package_name">com.prepmaster.app</string>
+    <string name="custom_url_scheme">com.prepmaster.app</string>
+</resources>
